@@ -7,7 +7,7 @@ require("dotenv").config();
 
 
 exports.createUser = async (req, res) => {
-  const { name, email, password, phone } = req.body;
+  const { username,name, email, password, phone } = req.body;
   try {
     const userExist = await UserModel.findOne({ email: email });
 
@@ -30,6 +30,7 @@ exports.createUser = async (req, res) => {
     }
 
     const userData = new UserModel({
+      username,
       name,
       email,
       phone,
